@@ -2,8 +2,12 @@ package org.example.pages;
 
 import org.example.config.Config;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.webdriver;
+import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class LoginPage extends BasePage {
 
@@ -25,6 +29,11 @@ public class LoginPage extends BasePage {
         fill(EMAIL_INPUT, email);
         fill(PASSWORD_INPUT, password);
         click(SUBMIT_BUTTON);
+    }
+
+    public void loginExpectingSuccess(String email, String password) {
+        login(email, password);
+        webdriver().shouldNotHave(urlContaining("/auth/login"), Duration.ofSeconds(15));
     }
 
     public String getError() {

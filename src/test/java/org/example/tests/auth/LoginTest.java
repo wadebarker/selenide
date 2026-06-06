@@ -1,8 +1,9 @@
 package org.example.tests.auth;
 
 import org.example.config.Config;
-import org.example.pages.LoginPage;
 import org.example.data.LoginTestData;
+import org.example.pages.LoginPage;
+import org.example.tests.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ import java.util.stream.Stream;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class LoginTest {
+class LoginTest extends BaseTest {
 
     private LoginPage loginPage;
 

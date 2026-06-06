@@ -21,7 +21,7 @@ public abstract class BasePage {
         $(locator).shouldBe(visible).click();
     }
 
-    protected boolean isVisible(String locator) {
+    public boolean isVisible(String locator) {
         return $(locator).is(visible);
     }
 
