@@ -15,15 +15,16 @@ import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
 public class ProfilePage extends BasePage {
 
-    private static final String PARENT = ".Personal_wrapper__osRLL";
-
     public static final String NAV = ".NavLine_nav__JR5gH";
     public static final String PERSONAL_INFO_TAB = NAV + " a[href='/profile']";
     public static final String AUTHORIZATION_TAB = NAV + " a[href='/profile/authorization']";
     public static final String ACTIVE_TAB = NAV + " .NavLine_active__w2KGW";
 
+    private static final String PARENT = ".Personal_wrapper__osRLL";
+
     public static final String USER_NAME = PARENT + " .Personal_name__l3BBs";
     public static final String AVATAR = PARENT + " .Personal_avatar__u21J8 img";
+
     public static final String FORM = PARENT + " .Personal_form__ll2V6";
 
     public static final String SURNAME_INPUT = FORM + " input[name='surname']";

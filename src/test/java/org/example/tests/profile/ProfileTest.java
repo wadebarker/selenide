@@ -52,18 +52,18 @@ class ProfileTest extends BaseTest {
     @Test
     @DisplayName("Навигация профиля")
     void profileNavigation() {
-        assertEquals(
-                ProfileTestData.PERSONAL_INFO_TAB,
-                profilePage.getActiveTabText(),
-                "Активной должна быть вкладка «Личная информация»"
+        assertTrue(
+                profilePage.isPersonalInfoTabActive(),
+                "Вкладка «Личная информация» должна быть активной"
         );
         assertTrue(
                 profilePage.isVisible(ProfilePage.AUTHORIZATION_TAB),
                 "Вкладка «Авторизация» должна быть видима"
         );
-        assertTrue(
-                profilePage.isPersonalInfoTabActive(),
-                "Вкладка «Личная информация» должна быть активной"
+        assertEquals(
+                ProfileTestData.PERSONAL_INFO_TAB,
+                profilePage.getActiveTabText(),
+                "Активной должна быть вкладка «Личная информация»"
         );
     }
 
