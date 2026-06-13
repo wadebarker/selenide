@@ -29,4 +29,27 @@ public class DataFactory {
     public static String generateLongPassword() {
         return generatePassword() + "x".repeat(50);
     }
+
+    public static String generateText(int length) {
+        if (length <= 0) {
+            return "";
+        }
+        return faker.lorem().characters(length);
+    }
+
+    public static String generateTitle() {
+        return generateText(10);
+    }
+
+    public static String generateDescription() {
+        return generateText(50);
+    }
+
+    public static String generateLongTitle() {
+        return generateText(51);
+    }
+
+    public static String generateLongDescription() {
+        return generateText(201);
+    }
 }
