@@ -178,6 +178,21 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
+    @DisplayName("Успешное создание задачи с описанием из 1 символа")
+    void successfulTaskCreationWithMinDescriptionLength() {
+        String title = "MinDesc " + System.currentTimeMillis();
+
+        dashboardPage.createTaskExpectingSuccess(
+                title,
+                DataFactory.generateText(DashboardTestData.DESCRIPTION_MIN_LENGTH),
+                minDate,
+                DashboardTestData.VALID_TIME
+        );
+
+        assertTrue(dashboardPage.isTaskVisible(title));
+    }
+
+    @Test
     @DisplayName("Успешное создание задачи с описанием из 200 символов")
     void successfulTaskCreationWithMaxDescriptionLength() {
         String title = "MaxDesc " + System.currentTimeMillis();

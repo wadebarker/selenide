@@ -2,7 +2,6 @@ package org.example.data;
 
 public class DashboardTestData {
 
-    public static final String FORM_TITLE = "Добавить задачу";
     public static final String SUCCESS_MESSAGE = "Задача добавлена";
     public static final String EMPTY_FIELD_ERROR = "Empty field (datef or timeF or title)";
 
