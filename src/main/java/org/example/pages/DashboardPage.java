@@ -15,6 +15,7 @@ import static com.codeborne.selenide.WebDriverConditions.url;
 
 public class DashboardPage extends BasePage {
 
+    // Компонент формы добавления дел
     private static final String PARENT = ".CreateTodo_wrapper__6mEMZ";
 
     public static final String FORM = PARENT + " .CreateTodo_form__Vir_s";
@@ -30,10 +31,13 @@ public class DashboardPage extends BasePage {
     public static final String SUCCESS_OK_BUTTON = ".Success_ok__y8HHg";
     public static final String SUCCESS_TITLE = ".Success_title__wgy0b";
 
+    // Компонент header приложения
     public static final String SEARCH_INPUT = ".Header_search-input__d5jfb";
     public static final String HOME_LINK = ".Header_list__YowdC a[href='/']";
     public static final String PROFILE_LINK = ".Header_list__YowdC a[href='/profile']";
     public static final String LOGOUT_BUTTON = ".Header_logout__vw_E5";
+
+    // Компонент заговок добавленного дела
     public static final String TODO_ITEM = ".TodoItem_content__J_7bo";
 
     @Override
@@ -52,8 +56,8 @@ public class DashboardPage extends BasePage {
 
     public void waitUntilLoaded() {
         webdriver().shouldHave(url(Config.BASE_URL + "/"), Duration.ofSeconds(15));
-        $(FORM).shouldBe(visible, Duration.ofSeconds(30));
         $(FORM_TITLE).shouldHave(text("Добавить задачу"));
+        $(FORM).shouldBe(visible, Duration.ofSeconds(30));
     }
 
     public void fillTitle(String title) {
@@ -91,16 +95,12 @@ public class DashboardPage extends BasePage {
 
     public void createTask(String title, String description, String date, String time) {
         fillTitle(title);
-        if (description != null && !description.isEmpty()) {
+        if (description != null && !description.isBlank()) {
             fillDescription(description);
         }
         fillDate(date);
         fillTime(time);
         submit();
-    }
-
-    public void createTask(String title, String date, String time) {
-        createTask(title, null, date, time);
     }
 
     public void submit() {

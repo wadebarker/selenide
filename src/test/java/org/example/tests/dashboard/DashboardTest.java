@@ -45,7 +45,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(10)
     @DisplayName("Главная открывается после авторизации")
     void dashboardOpensAfterLogin() {
         assertEquals(
@@ -60,7 +59,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(11)
     @DisplayName("Форма создания задачи содержит все поля")
     void createTaskFormContainsAllFields() {
         assertTrue(dashboardPage.isVisible(DashboardPage.TITLE_INPUT));
@@ -73,7 +71,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(12)
     @DisplayName("Диапазон даты — от сегодня до 7 дней вперёд")
     void dateRangeIsLimitedToSevenDays() {
         assertEquals(
@@ -84,7 +81,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(13)
     @DisplayName("Диапазон времени — от 06:00 до 23:00")
     void timeRangeIsLimited() {
         assertEquals(DashboardTestData.TIME_MIN, dashboardPage.getTimeMin());
@@ -92,7 +88,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(14)
     @DisplayName("Успешное создание задачи со всеми полями")
     void successfulTaskCreationWithAllFields() {
         String title = "Task " + System.currentTimeMillis();
@@ -111,13 +106,13 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(15)
     @DisplayName("Успешное создание задачи без описания")
     void successfulTaskCreationWithoutDescription() {
         String title = "NoDesc " + System.currentTimeMillis();
 
         dashboardPage.createTaskExpectingSuccess(
                 title,
+                DataFactory.generateDescription(),
                 minDate,
                 DashboardTestData.VALID_TIME
         );
@@ -126,7 +121,21 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(16)
+    @DisplayName("Успешное создание задачи на минимально допустимую дату")
+    void successfulTaskCreationOnMinDate() {
+        String title = "MinDate " + System.currentTimeMillis();
+
+        dashboardPage.createTaskExpectingSuccess(
+                title,
+                DataFactory.generateDescription(),
+                minDate,
+                DashboardTestData.VALID_TIME
+        );
+
+        assertTrue(dashboardPage.isTaskVisible(title));
+    }
+
+    @Test
     @DisplayName("Успешное создание задачи на максимально допустимую дату")
     void successfulTaskCreationOnMaxDate() {
         String title = "MaxDate " + System.currentTimeMillis();
@@ -134,14 +143,13 @@ class DashboardTest extends BaseTest {
         dashboardPage.createTaskExpectingSuccess(
                 title,
                 maxDate,
-                DashboardTestData.TIME_MAX
+                DashboardTestData.VALID_TIME
         );
 
         assertTrue(dashboardPage.isTaskVisible(title));
     }
 
     @Test
-    @Order(17)
     @DisplayName("Успешное создание задачи с заголовком из 1 символа")
     void successfulTaskCreationWithMinTitleLength() {
         String title = DataFactory.generateText(DashboardTestData.TITLE_MIN_LENGTH);
@@ -156,7 +164,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(18)
     @DisplayName("Успешное создание задачи с заголовком из 50 символов")
     void successfulTaskCreationWithMaxTitleLength() {
         String title = DataFactory.generateText(DashboardTestData.TITLE_MAX_LENGTH);
@@ -171,7 +178,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(19)
     @DisplayName("Успешное создание задачи с описанием из 200 символов")
     void successfulTaskCreationWithMaxDescriptionLength() {
         String title = "MaxDesc " + System.currentTimeMillis();
@@ -187,7 +193,34 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(1)
+    @DisplayName("Успешное создание задачи на минимально допустимое время")
+    void successfulTaskCreationOnMinTime() {
+        String title = "TimeMin " + System.currentTimeMillis();
+
+        dashboardPage.createTaskExpectingSuccess(
+                title,
+                minDate,
+                DashboardTestData.TIME_MIN
+        );
+
+        assertTrue(dashboardPage.isTaskVisible(title));
+    }
+
+    @Test
+    @DisplayName("Успешное создание задачи на максимальное допустимое время")
+    void successfulTaskCreationOnMaxTime() {
+        String title = "TimeMax " + System.currentTimeMillis();
+
+        dashboardPage.createTaskExpectingSuccess(
+                title,
+                maxDate,
+                DashboardTestData.TIME_MAX
+        );
+
+        assertTrue(dashboardPage.isTaskVisible(title));
+    }
+
+    @Test
     @DisplayName("Негативный сценарий: пустая дата")
     void negativeEmptyDate() {
         dashboardPage.fillTitle("Test task");
@@ -201,7 +234,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(2)
     @DisplayName("Негативный сценарий: дата в прошлом")
     void negativePastDate() {
         String title = "Past " + System.currentTimeMillis();
@@ -212,7 +244,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(3)
     @DisplayName("Негативный сценарий: дата более чем на 7 дней вперёд")
     void negativeDateBeyondAllowedRange() {
         String title = "Future " + System.currentTimeMillis();
@@ -223,7 +254,6 @@ class DashboardTest extends BaseTest {
     }
 
     @Test
-    @Order(4)
     @DisplayName("Негативный сценарий: описание длиннее 200 символов")
     void negativeDescriptionTooLong() {
         String title = "LongDesc " + System.currentTimeMillis();
