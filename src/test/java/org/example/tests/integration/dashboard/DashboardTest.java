@@ -1,4 +1,4 @@
-package org.example.tests.dashboard;
+package org.example.tests.integration.dashboard;
 
 import org.example.config.Config;
 import org.example.data.DashboardTestData;

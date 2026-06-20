@@ -12,7 +12,9 @@ import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 public class ProfileAuthPage extends BasePage {
 
     public static final String NAV = ".NavLine_nav__JR5gH";
+    public static final String PERSONAL_INFO_TAB = NAV + " a[href='/profile']";
     public static final String AUTHORIZATION_TAB = NAV + " a[href='/profile/authorization']";
+    public static final String ACTIVE_TAB = NAV + " .NavLine_active__w2KGW";
 
     private static final String PARENT = ".Authorization_wrapper__vtNRF";
     private static final String CONTAINER = PARENT + " .Authorization_container__gFYDn";

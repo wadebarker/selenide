@@ -1,4 +1,4 @@
-package org.example.tests.auth;
+package org.example.tests.integration.auth;
 
 import org.example.config.Config;
 import org.example.data.LoginTestData;

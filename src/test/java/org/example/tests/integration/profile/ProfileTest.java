@@ -1,4 +1,4 @@
-package org.example.tests.profile;
+package org.example.tests.integration.profile;
 
 import org.example.config.Config;
 import org.example.data.ProfileTestData;

@@ -1,4 +1,4 @@
-package org.example.tests.profile;
+package org.example.tests.integration.profile;
 
 import org.example.config.Config;
 import org.example.pages.ProfileAuthPage;
@@ -62,8 +62,8 @@ class ProfileAuthTest extends BaseTest {
     @Test
     @DisplayName("Ввод и сохранение почты (проверка на уровне DOM)")
     void successfulEmailUpdateDomLevel() {
-        final String testEmail = "test.user@example.com";
-        final String confirmPassword = "currentPassword123";
+        final String testEmail = "vadim_zviagintsev555@mail.ru";
+        final String confirmPassword = "Qwerty123";
 
         authPage.setEmail(testEmail);
         authPage.setEmailPassword(confirmPassword);
