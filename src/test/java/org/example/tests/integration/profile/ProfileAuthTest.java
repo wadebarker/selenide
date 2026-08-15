@@ -60,14 +60,13 @@ class ProfileAuthTest extends BaseTest {
     }
 
     @Test
-    @DisplayName("Ввод и сохранение почты (проверка на уровне DOM)")
-    void successfulEmailUpdateDomLevel() {
+    @DisplayName("Поля секции 'Почта' принимают ввод (проверка на уровне DOM)")
+    void emailFieldsAcceptInput() {
         final String testEmail = "vadim_zviagintsev555@mail.ru";
         final String confirmPassword = "Qwerty123";
 
         authPage.setEmail(testEmail);
         authPage.setEmailPassword(confirmPassword);
-        authPage.submitEmailForm();
 
         // Перезагрузим страницу и проверим DOM-значения аналогично ProfileTest
         authPage.open();
@@ -76,12 +75,39 @@ class ProfileAuthTest extends BaseTest {
         assertEquals(
                 testEmail,
                 authPage.getInputValue(ProfileAuthPage.EMAIL_INPUT),
-                "Ожидалось сохранённое значение email в поле"
+                "Ожидалось введённое значение email в поле"
         );
         assertEquals(
                 confirmPassword,
                 authPage.getInputValue(ProfileAuthPage.EMAIL_PASSWORD_INPUT),
                 "Ожидалось значение в поле подтверждения пароля для почты"
+        );
+    }
+
+    @Test
+    @DisplayName("Поля секции 'Смена пароля' принимают ввод (проверка на уровне DOM)")
+    void passwordFieldsAcceptInput() {
+        final String currentPassword = "Qwerty123";
+        final String newPassword = "Qwerty456";
+
+        authPage.setCurrentPassword(currentPassword);
+        authPage.setNewPassword(newPassword);
+        authPage.setCheckNewPassword(newPassword);
+
+        assertEquals(
+                currentPassword,
+                authPage.getInputValue(ProfileAuthPage.CURRENT_PASSWORD_INPUT),
+                "Ожидалось значение в поле текущего пароля"
+        );
+        assertEquals(
+                newPassword,
+                authPage.getInputValue(ProfileAuthPage.NEW_PASSWORD_INPUT),
+                "Ожидалось значение в поле нового пароля"
+        );
+        assertEquals(
+                newPassword,
+                authPage.getInputValue(ProfileAuthPage.CHECK_NEW_PASSWORD_INPUT),
+                "Ожидалось значение в поле повторного пароля"
         );
     }
 }
