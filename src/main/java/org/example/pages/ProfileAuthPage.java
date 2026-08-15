@@ -105,4 +105,17 @@ public class ProfileAuthPage extends BasePage {
     public void submitPasswordForm() {
         $(PASSWORD_SAVE_BUTTON).shouldBe(visible).click();
     }
+
+    public void changeEmail(String newEmail, String currentPassword) {
+        setEmail(newEmail);
+        setEmailPassword(currentPassword);
+        submitEmailForm();
+    }
+
+    public void changePassword(String currentPassword, String newPassword) {
+        setCurrentPassword(currentPassword);
+        setNewPassword(newPassword);
+        setCheckNewPassword(newPassword);
+        submitPasswordForm();
+    }
 }

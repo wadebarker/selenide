@@ -29,7 +29,7 @@ class LoginTest extends BaseTest {
     @DisplayName("Успешная авторизация")
     void successfulLogin() {
 
-        loginPage.login(
+        loginPage.loginExpectingSuccess(
                 Config.LoginCredentials.EMAIL,
                 Config.LoginCredentials.PASSWORD
         );

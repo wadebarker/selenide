@@ -33,7 +33,7 @@ class RegisterTest extends BaseTest {
         String email = DataFactory.generateEmail();
         String password = DataFactory.generatePassword();
 
-        registerPage.register(
+        registerPage.registerExpectingSuccess(
                 email,
                 password,
                 password

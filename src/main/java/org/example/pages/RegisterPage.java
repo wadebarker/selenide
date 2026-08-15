@@ -2,6 +2,11 @@ package org.example.pages;
 
 import org.example.config.Config;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.webdriver;
+import static com.codeborne.selenide.WebDriverConditions.urlContaining;
+
 public class RegisterPage extends BasePage {
 
     private static final String PARENT = ".Register_content__MmAGw";
@@ -23,6 +28,11 @@ public class RegisterPage extends BasePage {
         fill(PASSWORD_INPUT, password);
         fill(CONFIRM_PASSWORD_INPUT, confirmPassword);
         click(SUBMIT_BUTTON);
+    }
+
+    public void registerExpectingSuccess(String email, String password, String confirmPassword) {
+        register(email, password, confirmPassword);
+        webdriver().shouldNotHave(urlContaining("/auth/register"), Duration.ofSeconds(15));
     }
 
     public String getError() {
