@@ -1,6 +1,5 @@
 package org.example.tests.e2e.profile;
 
-import org.example.config.Config;
 import org.example.pages.ProfileAuthPage;
 import org.example.tests.BaseTest;
 import org.junit.jupiter.api.BeforeAll;
