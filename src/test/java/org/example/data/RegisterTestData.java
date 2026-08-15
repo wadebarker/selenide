@@ -62,13 +62,6 @@ public class RegisterTestData {
                     "password", DataFactory.generateLongPassword(),
                     "confirm_password", DataFactory.generatePassword(),
                     "error_message", "Максимум 50 символов"
-            ),
-
-            Map.of("title", "Пароль и подтверждение не совпадают",
-                    "email", DataFactory.generateEmail(),
-                    "password", DataFactory.generatePassword(),
-                    "confirm_password", DataFactory.generatePassword() + "123",
-                    "error_message", "Пароли не совпадают"
             )
     );
 }

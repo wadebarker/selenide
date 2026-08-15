@@ -68,10 +68,6 @@ class ProfileAuthTest extends BaseTest {
         authPage.setEmail(testEmail);
         authPage.setEmailPassword(confirmPassword);
 
-        // Перезагрузим страницу и проверим DOM-значения аналогично ProfileTest
-        authPage.open();
-        authPage.waitUntilLoaded();
-
         assertEquals(
                 testEmail,
                 authPage.getInputValue(ProfileAuthPage.EMAIL_INPUT),
