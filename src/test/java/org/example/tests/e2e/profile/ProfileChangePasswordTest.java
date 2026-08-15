@@ -29,7 +29,7 @@ class ProfileChangePasswordTest extends BaseTest {
         ProfileAuthPage authPage = new ProfileAuthPage();
         authPage.open();
         authPage.waitUntilLoaded();
-        authPage.changePassword(password, newPassword);
+        authPage.changePassword(password, newPassword, newPassword);
 
         new Header().logout();
 
